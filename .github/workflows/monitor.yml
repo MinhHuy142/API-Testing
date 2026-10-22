@@ -1,0 +1,30 @@
+name: API Performance Monitoring
+
+on:
+  schedule:
+    - cron: '0 * * * *' # Chạy tự động mỗi giờ một lần
+  workflow_dispatch: # Cho phép bấm chạy thủ công trên GitHub
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install Newman
+        run: |
+          npm install -g newman
+
+      - name: Run Monitoring Test via Newman
+        run: |
+          newman run "2474802016546_NguyenMinhHuy_ReqRes.postman_collection.json" \
+            -e "2474802016546_NguyenMinhHuy_ReqRes_Env.postman_environment.json" \
+            --env-var "baseUrl=https://reqres.in" \
+            --folder "Positive_Cases (Happy Path)"
