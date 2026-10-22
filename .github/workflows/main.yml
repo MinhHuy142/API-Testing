@@ -26,8 +26,8 @@ jobs:
 
       - name: Run Postman Tests with Newman
         run: |
-          newman run "*ReqRes.postman_collection.json" \
-            -e "*_Env*.json" \
+          newman run "2474802016546_NguyenMinhHuy_ReqRes.postman_collection.json" \
+            -e "2474802016546_NguyenMinhHuy_ReqRes_Env.postman_environment.json" \
             --env-var "baseUrl=https://reqres.in" \
             -r cli,htmlextra \
             --reporter-htmlextra-export newman/report.html
