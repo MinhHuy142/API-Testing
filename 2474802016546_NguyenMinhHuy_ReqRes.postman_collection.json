@@ -63,7 +63,7 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "// 1. Kiểm tra Status code là 200\npm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});\n\n// 2. Kiểm tra trường data.id bằng 2 và email chứa đuôi @reqres.in\npm.test(\"Validate user data id and email domain\", function () {\n    var jsonData = pm.response.json();\n    pm.expect(jsonData.data.id).to.eql(2);\n    pm.expect(jsonData.data.email).to.include(\"@reqres.in\");\n});"
+                  "// 1. Kiểm tra Status code là 200\npm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});\n\n// 2. Kiểm tra trường data.id bằng 2 và email chứa đuôi @reqres.in\npm.test(\"Validate user data id and email domain\", function () {\n    var jsonData = pm.response.json();\n    pm.expect(jsonData.data.id).to.eql(2);\n    pm.expect(jsonData.data.email).to.include(\"@reqres.in\");\n});\n\n// 3. THÊM ĐOẠN NÀY (Kiểm tra thời gian phản hồi dưới 800ms)\npm.test(\"Response time is below 800ms\", function () {\n    pm.expect(pm.response.responseTime).to.be.below(800);\n});"
                 ]
               }
             }
